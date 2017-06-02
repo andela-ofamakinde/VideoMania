@@ -1,0 +1,29 @@
+{
+  "name": "assessment_project",
+  "description": "",
+  "main": "nodemon index.js",
+  "authors": [
+    "andela-ofamamkinde <olatoyosi.famakinde@andela.co>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-toastr": "^2.1.1",
+    "angular-ui-router": "^1.0.3",
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.4",
+    "jquery": "^3.2.1",
+    "angular-youtube-api-factory": "^0.6.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.4"
+  }
+}
