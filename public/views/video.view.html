@@ -1,0 +1,18 @@
+<div>Welcome To Video Search
+    <form ng-submit="vm.searchVideos()">
+        <input type="text" placeholder="Search keyword" ng-model="vm.searchQuery" required>
+        <button>Search</button>
+    </form>
+    <div ng-show="vm.videoItems" ng-repeat="item in vm.videoItems track by $index">
+        <ul>
+            <li>Video Title: {{item.snippet.title}}</li>
+            <li>{{item.id.videoId}}<li>
+        </ul>
+        <button ng-click="vm.showVideo()">Watch Video</button>
+    <div>
+    <div ng-if="vm.watchVideo">
+        <iframe id="ytplayer" type="text/html" width="640"
+        height="360" ng-src="{{item.videoUrl}}" frameborder="0">
+        </iframe>
+    </div>
+</div>

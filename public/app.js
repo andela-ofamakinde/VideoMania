@@ -1,18 +1,26 @@
-angular.module('VideoApp', ['ui.router']);
+(function(){
+    'use strict';
+    angular.module('VideoApp', ['ui.router', 'jtt_youtube', 'toastr']);
 
-function config($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/home');
+    function config($urlRouterProvider, $stateProvider, $sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'https://www.youtube.com/embed/*'
+        ]);
 
-    var homeSettings = {
-        url: '/home',
-        templateUrl: 'views/home.view.html',
-        controller: 'videoController',
-        controllerAs: 'vm'
-    };
+        $urlRouterProvider.otherwise('/videos');
 
-    $stateProvider
-        .state('home', homeSettings)
-};
+        var homeSettings = {
+            url: '/videos',
+            templateUrl: 'views/video.view.html',
+            controller: 'videoController',
+            controllerAs: 'vm'
+        };
 
-angular.module('VideoApp')
-    .config(['$urlRouterProvider', '$stateProvider', config]);
+        $stateProvider
+            .state('videos', homeSettings)
+        };
+
+    angular.module('VideoApp')
+        .config(['$urlRouterProvider', '$stateProvider', '$sceDelegateProvider', config]);
+})();
