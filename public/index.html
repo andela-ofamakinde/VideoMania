@@ -1,18 +1,42 @@
 <html>
     <head>
         <title>VideoMania</title>
-        <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.min.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.min.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+        <script>
+
+        // Initialize Firebase
+            var config = {
+                apiKey: 'API_KEY',
+                authDomain: 'AUTH_DOMAIN',
+                databaseURL: 'DATABASE_URL',
+                projectId: 'PROJECT_ID',
+                storageBucket: "STORAGE_BUCKET",
+                messagingSenderId: "MESSAGING_SENDER_ID"
+            };
+            firebase.initializeApp(config);
+        </script>
     </head>
+
     <body ng-app='VideoApp'>
+        <navbar></navbar>
+
         <div ui-view></div>
 
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/angularfire/dist/angularfire.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
         <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="app.run.js"></script>
+        <script type="text/javascript" src="factories/auth.factory.js"></script>
+        <script type="text/javascript" src="services/toastr.service.js"></script>
         <script type="text/javascript" src="services/video.service.js"></script>
+        <script type="text/javascript" src="services/auth.service.js"></script>
         <script type="text/javascript" src="controllers/video.controller.js"></script>
+        <script type="text/javascript" src="controllers/auth.controller.js"></script>
+        <script type="text/javascript" src="directives/navbar.directive.js"></script>
     </body>
 </html>

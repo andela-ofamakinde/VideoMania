@@ -1,0 +1,9 @@
+<nav>
+    <div>
+      <a class="navbar-brand" href="#">VideoMania</a>
+      <button ui-sref="home">Home</button>
+      <button ng-if="!vm.firebaseUser" ui-sref="signin">Sign Up</button>
+      <button ng-if="!vm.firebaseUser" ui-sref="login">Log In</button>
+      <button ng-if="vm.firebaseUser" ng-click="vm.logout()">Log Out</button>
+    </div>
+</nav>

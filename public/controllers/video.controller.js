@@ -7,7 +7,6 @@
 
     function videoController(videoService, toastr, $window) {
         var vm = this;
-
         vm.searchQuery = "";
         vm.videoItems;
         vm.watchVideo = false;
