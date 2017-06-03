@@ -5,39 +5,60 @@
 
     videoController.$inject = ['videoService', 'toastr', '$window'];
 
-    function videoController(videoService, toastr, $window) {
+    function videoController(videoService, toastrService, $window) {
         var vm = this;
-        vm.searchQuery = "";
         vm.videoItems;
+        vm.searchQuery = "";
         vm.watchVideo = false;
 
         vm.searchVideos = function() {
             if (vm.searchQuery) {
                 videoService.getVideos(vm.searchQuery)
                 .then(function(result) {
-                    if (result.data.items) {
-                        vm.constructVideoUrl(result.data.items);
-                        vm.videoItems = result.data.items;
-                    } else {
-                        toastr.info("No Videos Match Search");
-                    }
+                    vm.checkVideoResponse(result);
                 })
                 .catch(function(error) {
-                    toastr.error("Unknown Error", "Error");
+                    toastrService.unknownError();
                 });
             } else {
-                toastr.error("Unknown Error", "Error");
+                toastrService.searchWarning();
             }
         };
 
-        vm.showVideo = function(videoId) {
+        vm.showVideo = function() {
             vm.watchVideo = true;
         };
 
-        vm.constructVideoUrl = function(videos) {
+        vm.watchLater = function(video) {
+            videoService.saveVideoId(video.videoId).then(function(result) {
+                vm.saved = true;
+            }).catch(function(error) {
+                toastrService.unknownError();
+            });
+        }
+
+        vm.listSavedVideos = function() {
+            videoService.listVideos().then(function(result){
+                //console.log(result);
+            })
+            .catch(function(error) {
+                //console.log(error);
+            })
+        }
+
+        var constructVideoUrl = function(videos) {
             return videos.forEach(function(video) {
                 video.videoUrl = 'https://www.youtube.com/embed/' + video.id.videoId;
             });
+        }
+
+        var checkVideoResponse = function(result) {
+            if (result.data.items) {
+                constructVideoUrl(result.data.items);
+                vm.videoItems = result.data.items;
+            } else {
+                toastrService.eemptySearch();
+            }
         }
     }
 })()

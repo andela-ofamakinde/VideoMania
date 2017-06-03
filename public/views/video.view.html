@@ -3,12 +3,18 @@
         <input type="text" placeholder="Search keyword" ng-model="vm.searchQuery" required>
         <button>Search</button>
     </form>
+    <div>Later Vidoes
+        <button ng-click="vm.listAllVideos()"></button>
+    </div>
     <div ng-show="vm.videoItems" ng-repeat="item in vm.videoItems track by $index">
         <ul>
             <li>Video Title: {{item.snippet.title}}</li>
-            <li>{{item.id.videoId}}<li>
+            <li>{{item.id.videoId}}</li>
         </ul>
         <button ng-click="vm.showVideo()">Watch Video</button>
+        <button ng-click="vm.watchLater(item.id)">Watch Later</button>
+        <div ng-if="vm.saved">Video Saved For Later</div>
+        <button ng-if="vm.saved" ng-click="vm.removeVideo(item.id)">Undo</button>
     <div>
     <div ng-if="vm.watchVideo">
         <iframe id="ytplayer" type="text/html" width="640"

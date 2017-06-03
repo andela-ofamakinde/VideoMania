@@ -41,11 +41,26 @@
             return toastr.success("Registration Successful", "Success");
         }
 
+        var searchWarning = function() {
+            return toastr.warn("Enter Search Query", "Error");
+        }
+
+        var emptySearch = function() {
+            return toastr.info("No Videos Match Search");
+        }
+
+        var unknownError = function(){
+            return toastr.error("Unknown Error", "Error");
+        }
+
         return {
             signUpError: signUpError,
-            signInError: signInError,
+            logInError: logInError,
             logInSuccess: logInSuccess,
-            registerSuccess: registerSuccess
+            registerSuccess: registerSuccess,
+            searchWarning: searchWarning,
+            emptySearch: emptySearch,
+            unknownError: unknownError
         };
     }
 })();

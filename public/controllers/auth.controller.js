@@ -16,6 +16,7 @@
 
         vm.userSignUp = function() {
             authService.signup(vm.user.email, vm.user.password).then(function(data) {
+                authService.currentUser(firebaseUser.uid);
                 return toastrService.registerSuccess();
             })
             .catch(function(error) {
@@ -25,7 +26,9 @@
 
         vm.userLogin = function() {
             authService.signin(vm.user.email, vm.user.password).then(function(firebaseUser) {
+                authService.currentUser(firebaseUser.uid);
                 vm.firebaseUser = firebaseUser;
+                $state.go('videos');
                 return toastrService.logInSuccess();
 
             })
