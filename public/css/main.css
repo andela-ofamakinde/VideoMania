@@ -1,0 +1,33 @@
+nav.navbar {
+    padding: 10px 40px;
+}
+ul.navbar-right {
+    padding-top: 7px;
+}
+.navbar-nav > li {
+    padding-right: 10px;
+}
+.card {
+    height: 100%;
+    border: 1px solid #eee;
+}
+iframe {
+    width: 100%;
+    height: 60%;
+}
+.video-card {
+    padding-bottom: 20px;
+    height: 300px;
+}
+.card-block {
+    padding: 10px;
+    text-align: left;
+}
+.card-block h5 {
+    height: 40px;
+    overflow: ellipse;
+}
+#search-input {
+    width: 340px;
+    height: 40px;
+}

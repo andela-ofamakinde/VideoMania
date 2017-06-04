@@ -1,0 +1,24 @@
+<div>
+     <div ng-if="vm.savedVideos">
+        <div class="text-left">
+            <h5>Saved Videos</h5>
+            <hr>
+            <br />
+        </div>
+        <div class="col-md-4 video-card" ng-repeat="video in vm.savedVideos track by $index">
+            <div class="card">
+                <div>
+                    <iframe id="ytplayer" type="text/html" ng-src="{{'https://www.youtube.com/embed/'+ video.videoId}}" frameborder="0">
+                    </iframe>
+                </div>
+                <div class="card-block">
+                    <h5 class="card-title">{{video.title || Title }}</h5>
+                    <button>Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="!vm.savedVideos">
+        <h3>No Saved Videos!</h3>
+    </div>
+<div>

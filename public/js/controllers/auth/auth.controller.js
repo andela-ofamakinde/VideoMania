@@ -7,12 +7,12 @@
 
     function authController(authService, $state, toastrService, Auth) {
         var vm = this;
+        vm.auth = Auth;
         vm.user = {
             email: "",
             passsword: ""
         };
         vm.firebaseUser = "";
-        vm.auth = Auth;
 
         vm.userSignUp = function() {
             authService.signup(vm.user.email, vm.user.password).then(function(data) {
@@ -42,8 +42,12 @@
         });
 
         vm.logout = function() {
-            $state.go('login');
+            $state.go('videos');
             return authService.signout();
         }
+
+        vm.listVideos = function() {
+            $state.go('saved-videos');
+        }
     }
-})()
+})();

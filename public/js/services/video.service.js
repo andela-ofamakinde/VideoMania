@@ -11,23 +11,32 @@
             return youtubeFactory.getVideosFromSearchByParams({
                 q: queryString,
                 videoEmbeddable: true,
-                key: 'AIzaSyA9Jnxg5-3GniP3ESPUot3tFjKc-T035Y0'
+                maxResults: 9,
+                key: "API_KEY"
             });
         };
 
-        var cacheVideo = function(data) {
-            $window.localStorage['videos'] = data;
+        var cacheVideos = function(data) {
+            $window.localStorage.removeItem('videos');
+            $window.localStorage.setItem('videos', JSON.stringify(data));
+            return;
         }
 
         var getVideoCache = function() {
-            return $window.localStorage['videos'];
+            var array = $window.localStorage.getItem('videos');
+            var returnedItems;
+            if (array.length) {
+                 returnedItems = JSON.parse(array);
+            } else {
+                returnedItems = [];
+            }
+            return returnedItems;
         }
 
-        var saveVideoId = function(videoId) {
+        var saveVideoId = function(videoId, title) {
             var uid = authService.getCurrentUser();
             var ref = firebase.database().ref('/videos/' + uid);
-
-            return ref.push({"videoId": videoId});
+            return ref.push({"videoId": videoId, "title": title});
         }
 
         var listVideos = function() {
@@ -46,7 +55,7 @@
 
         return {
             getVideos: getVideos,
-            cacheVideo: cacheVideo,
+            cacheVideos: cacheVideos,
             getVideoCache: getVideoCache,
             saveVideoId: saveVideoId,
             listVideos: listVideos

@@ -1,0 +1,35 @@
+<div class="text-center">
+    <div class="jumbotron">
+        <h1>Search For Videos Here!</h1>
+        </form>
+        <form class="form-inline" ng-submit="vm.searchVideos()">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" placeholder="Search keyword" id="search-input" ng-model="vm.searchQuery" class="form-control long" required>
+                    <div class="input-group-addon" ng-click="vm.searchVideos()">Search</div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div ng-if="vm.videoItems">
+        <div ng-if="vm.videoItems" class="text-left">
+            <h5>Search results</h5>
+            <hr>
+            <br />
+        </div>
+        <div class="col-md-4 video-card" ng-repeat="item in vm.videoItems track by $index">
+            <div class="card">
+                <div>
+                    <iframe id="ytplayer" type="text/html" ng-src="{{'https://www.youtube.com/embed/'+ item.id.videoId}}" frameborder="0">
+                    </iframe>
+                </div>
+                <div class="card-block">
+                    <h5 class="card-title">{{item.snippet.title}}</h5>
+                    <button ng-click="vm.watchLater(item.id.videoId, item.snippet.title)">Watch Later</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

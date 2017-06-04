@@ -4,18 +4,19 @@
         <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.min.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
         <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
         <script>
 
         // Initialize Firebase
             var config = {
-                apiKey: 'API_KEY',
-                authDomain: 'AUTH_DOMAIN',
-                databaseURL: 'DATABASE_URL',
-                projectId: 'PROJECT_ID',
-                storageBucket: "STORAGE_BUCKET",
+                apiKey: "API_KEY",
+                authDomain: "AUTH_DOMAIN",
+                databaseURL: "DATABASE_URL",
+                projectId: "PROJECT_ID",
+                storageBucket: "STORE_BUCKEET",
                 messagingSenderId: "MESSAGING_SENDER_ID"
-            };
+            }
             firebase.initializeApp(config);
         </script>
     </head>
@@ -23,8 +24,10 @@
     <body ng-app='VideoApp'>
         <navbar></navbar>
 
-        <div ui-view></div>
+        <div ui-view class="container"></div>
 
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
         <script type="text/javascript" src="bower_components/angularfire/dist/angularfire.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
@@ -32,12 +35,13 @@
         <script type="text/javascript" src="bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.min.js"></script>
         <script type="text/javascript" src="app.js"></script>
         <script type="text/javascript" src="app.run.js"></script>
-        <script type="text/javascript" src="factories/auth.factory.js"></script>
-        <script type="text/javascript" src="services/toastr.service.js"></script>
-        <script type="text/javascript" src="services/video.service.js"></script>
-        <script type="text/javascript" src="services/auth.service.js"></script>
-        <script type="text/javascript" src="controllers/video.controller.js"></script>
-        <script type="text/javascript" src="controllers/auth.controller.js"></script>
-        <script type="text/javascript" src="directives/navbar.directive.js"></script>
+        <script type="text/javascript" src="js/factories/auth.factory.js"></script>
+        <script type="text/javascript" src="js/services/toastr.service.js"></script>
+        <script type="text/javascript" src="js/services/video.service.js"></script>
+        <script type="text/javascript" src="js/services/auth.service.js"></script>
+        <script type="text/javascript" src="js/controllers/videos/video.controller.js"></script>
+        <script type="text/javascript" src="js/controllers/videos/saved.videos.controller.js"></script>
+        <script type="text/javascript" src="js/controllers/auth/auth.controller.js"></script>
+        <script type="text/javascript" src="js/directives/navbar.directive.js"></script>
     </body>
 </html>

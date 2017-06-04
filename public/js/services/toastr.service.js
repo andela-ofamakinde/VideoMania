@@ -22,8 +22,8 @@
         }
 
         var logInError = function(error) {
-            if (error.code == ("auth/wrong-password" || "auth/user-not-found" || "auth/account-exists-with-different-credential"
-                || "auth/invalid-credential")) {
+            if (error.code == ("auth/wrong-password" || "auth/user-not-found"
+                || "auth/account-exists-with-different-credential" || "auth/invalid-credential")) {
                 toastr.error("Invalid Email Or Password. Try Again", "Error")
             } else if ("auth/user-not-found" || "auth/user-disabled") {
                 toastr.error("User Not Found", "Error")
@@ -42,7 +42,7 @@
         }
 
         var searchWarning = function() {
-            return toastr.warn("Enter Search Query", "Error");
+            return toastr.error("Enter Search Query", "Error");
         }
 
         var emptySearch = function() {

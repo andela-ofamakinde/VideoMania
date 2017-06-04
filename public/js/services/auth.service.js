@@ -12,6 +12,7 @@
         }
 
         var signout = function() {
+            $window.localStorage.removeItem('current_user');
             return Auth.$signOut();
         }
 
