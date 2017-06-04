@@ -1,10 +1,10 @@
-var bodyParser = require('body-parser');
-var helmet = require('helmet');
-var express = require('express');
-var morgan = require('morgan');
-var userRoutes = require('../routes/user.routes');
+(function() {
+    var bodyParser = require('body-parser');
+    var helmet = require('helmet');
+    var express = require('express');
+    var morgan = require('morgan');
 
-var expressConfig = function(app) {
+    var expressConfig = function(app) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -21,8 +21,8 @@ var expressConfig = function(app) {
         next();
     });
 
-    app.use('/', userRoutes);
     app.use('/', express.static(process.cwd() + '/public'));
-}
+    }
 
-module.exports = expressConfig;
+    module.exports = expressConfig;
+})();

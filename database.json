@@ -1,7 +1,0 @@
-{
-    "dev": {"ENV": "DEV_DB_URL"},
-    "test": {"ENV": "TEST_DB_URL"},
-    "prod": {"ENV": "PROD_DB_URL"},
-
-    "rds": {"ENV": "TEST_DB_URL"}
-}
