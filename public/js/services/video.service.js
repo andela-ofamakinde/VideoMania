@@ -25,7 +25,7 @@
         var getVideoCache = function() {
             var array = $window.localStorage.getItem('videos');
             var returnedItems;
-            if (array.length) {
+            if (array && array.length) {
                  returnedItems = JSON.parse(array);
             } else {
                 returnedItems = [];

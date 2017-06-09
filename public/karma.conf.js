@@ -16,11 +16,19 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'bower_components/angular/angular.js',
+      'bower_components/firebase/firebase.js',
+      'bower_components/angularfire/dist/angularfire.js',
+      'bower_components/angular-youtube-api-factory/dist/angular-youtube-api-factory.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'firebase.js',
       'app.js',
-      'services/*.js',
-      'controllers/*.js',
+      'app.run.js',
+      'js/factories/*.js',
+      'js/services/*.js',
+      'js/controllers/*/*.js',
+      'js/directives/*.js',
       'tests/*.js'
     ],
 
@@ -66,7 +74,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous

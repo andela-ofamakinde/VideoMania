@@ -3,6 +3,7 @@
     var helmet = require('helmet');
     var express = require('express');
     var morgan = require('morgan');
+    var config = require('../routes/config.route');
 
     var expressConfig = function(app) {
     app.use(bodyParser.json());
@@ -20,7 +21,7 @@
         res.setHeader('Access-Control-Allow-Credentials', true);
         next();
     });
-
+    app.use('/proccess', config);
     app.use('/', express.static(process.cwd() + '/public'));
     }
 
